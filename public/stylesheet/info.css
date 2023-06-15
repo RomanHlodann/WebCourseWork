@@ -1,0 +1,84 @@
+body{
+    background-image: url(../images/—Pngtree—purple\ bright\ stars\ background_1331438.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.containerInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main{
+    background-color: wheat;
+    width: 1000px;
+    color: darkslateblue;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+img, p{
+    margin: 10px;
+}
+
+.typeOfCards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.typeOfCards img{
+    width: 50%;
+}
+
+.showCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cardsExplained{
+    text-align: left; 
+    border-bottom: 3px solid darkslateblue;
+}
+
+.cardTier{
+    display: flex;
+    flex-direction: row;
+}
+.cardTier img{
+    width: 20%;
+}
+
+#infoAboutCard{
+    position: fixed;
+    opacity: 0;
+    padding: 20px;
+    width: 40%;
+    left: 30%;
+    background-color: darkslateblue;
+    border-radius: 15px;
+    color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+}
+
+#descOfCard{
+    text-align: center;
+    font-size: 20px;
+}
+
+#cancel{
+    position: absolute;
+    font-size: 35px;
+    top: 7%;
+    right: 3%;
+    color: wheat;
+}

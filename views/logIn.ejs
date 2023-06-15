@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/stylesheet/generalStyles.css">
+        <video src="/images/video.mp4" muted loop autoplay></video>
+        <script src="https://kit.fontawesome.com/003f491bf9.js" crossorigin="anonymous"></script>
+        <script src="/javascript/loginValid.js"></script>
+    </head>
+    <body>
+        <script src="/javascript/loginValid.js"></script>
+        <div class="showcase">
+            <h1>Hunter X Hunter</h1>
+            <i class="toggle fa-solid fa-bars fa-2xl "></i>
+        </div>
+        <div class="registration">
+            <input type="checkbox" id="chk" aria-hidden="true" style="display: none;">
+            <div class="signUp">
+                <form action="/auth" method="POST" onsubmit="return checkInputRegistration()">
+                    <label for="chk" aria-hidden="true">Sign up</label>
+                    <input id="signUpLogin" type="text" placeholder="Login" name="login">
+                    <input id="signUpPwd" type="password" placeholder="Password" name="password">
+                    <input id="signUpconfirm" type="password" placeholder="Confirm password">
+                    <input id="signUpemail" type="email" placeholder="Email" name="email">
+                    <input type="hidden" name="action" value="register">
+                    <button type="submit" id="registerBtn">Sign up</button>
+                
+                </form>
+                <% if( typeof message_register !== 'undefined') { %>
+                    <h3 id="errorSignUp" class="error"> <%= message_register %></h3>
+                <% } %>
+                
+            </div>
+            <div class="logIn">
+                <form action="/auth" method="POST" onsubmit="return checkInputLogin()">
+                    <label for="chk" aria-hidden="true">Login</label>
+                    <input id="login" type="text" placeholder="Login" name="login">
+                    <input type="password" id="password" placeholder="Password" name="password">
+                    <input type="hidden" name="action" value="login">
+                    <button type="submit" id="loginBtn">Login</button>
+                </form>
+                <% if( typeof message_login !== 'undefined') { %>
+                    <h3 id="errorSignUp" class="error"> <%= message_login %></h3>
+                <% } %>
+            </div>
+        </div>
+        
+    </body>
+</html>

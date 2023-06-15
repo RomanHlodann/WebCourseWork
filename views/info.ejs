@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/stylesheet/wheelStyles.css">
+        <link rel="stylesheet" href="/stylesheet/generalStyles.css">
+        <link rel="stylesheet" href="/stylesheet/info.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://kit.fontawesome.com/003f491bf9.js" crossorigin="anonymous"></script>
+        <script>
+            const user_id = `<%= user.user_id %>`;
+            let cards = [];
+            `<% cards.forEach(element => {%>`
+                cards.push({card_id: `<%=element.id%>`, description: `<%=element.description%>`});
+                `<%}); %>`         
+        </script>
+        <script src="/javascript/info.js" defer></script>
+    </head>
+    <!-- <script defer src="../javascript/info.js"></script> -->
+    <body>
+        <div id="wheelContainer">
+            <div class="nav" style="color:wheat;" >
+                <h1>Hunter X Hunter</h1>
+                <div class="navbar">
+                    <h3 class="navButton"><a href="/">Play</a></h3>
+                    <h3 class="navButton"><a href="/wheel">Spin</a></h3>
+                    <h3 class="navButton"><a href="/book">Book</a></h3>
+                    <h3 class="navButton"><a href="/info">Info</a></h3>
+                    <% if(typeof user == 'undefined') {%>
+                         <a href="/auth"><h3 id="registerButton">Sign-up/Login</h3></a> 
+                    <%} else {%>
+                        <div class="loginedName" id="registerButton" style="width: 200px;">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="/logout">
+                                <h3 style="padding-left: 10px;"><%=user.login%></h3>
+                                
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="containerInfo">
+                <div class="main">
+                    <h1 style="align-self: center; margin: 20px;">Instruction to the game</h1>
+                    <p>It`s the game, where you shoud get cards as much card as you can. They are divided into ranks from the best: 
+                        <b>SS</b>, <b>S</b>, <b>A</b>, <b>B</b>, <b>C</b> and lower. Every card has one of this types:
+                    </p>
+                    <div class="showCards">
+                        <div class="typeOfCards">
+                            <img src="../cards/1007.png">
+                            <p><b style="color:red">ATTACK. </b>For example: This card steal random opponent card</p>
+                        </div>
+                        <div class="typeOfCards">
+                            <img src="../cards/087.png">
+                            <p><b style="color:blue">DEFENCE. </b>For example: This card defend card from some attack cards</p>
+                        </div>
+                        <div class="typeOfCards">
+                            <img src="../cards/017.png">
+                            <p><b style="color:grey">SPECIAL. </b>For example: This card returns your cards that lost for 10 minutes</p>
+                        </div>
+                    </div>
+                    <p><b>To get</b> this cards you have 2 ways. First one is spinning wheel.
+                    You can click on <b><i>Spin</i></b> in navigation bar, and spin as much as you want</p>
+                    <img src="../images/wheel.png">
+                    <p>
+                        That`s great, but chances to get great card are really small. 
+                        Second way, is to play game with other players and steal some cards. <b>But be careful, you can become
+                            a victim too!</b> To find a game you should click on <b><i>Game</i></b> and then <b><i>Play</i></b> to find a lobby.
+                    </p>
+                    <img src="../images/game.png">
+                    <p>After you found a lobby, you can <b>chat</b> with your opponent or <b>start a game</b> by clicking on card. <b>Notice: </b>the only way you can left game is by playing 
+                    card with id 1014</p>
+                    <img src="../images/gamee.png">   
+                    <p>But you may ask: `Where should I get this inventory, and see my gained cards?` Just click on <b><i>Book</i></b></p>
+                    <img src="../images/book.png">   
+
+                    <h1 style="margin: 25px;">All cards explained</h1>
+                    <h2 class="cardsExplained">S-tier</h2>
+                    <div class="cardTier">
+                        <img onclick="displayCardInfo(17)" src="../cards/017.png">
+                        <img onclick="displayCardInfo(87)" src="../cards/087.png">
+                    </div>
+
+                    <h2 class="cardsExplained">A-tier</h2>
+                    <div class="cardTier">
+                        <img onclick="displayCardInfo(13)" src="../cards/013.png">
+                        <img onclick="displayCardInfo(88)" src="../cards/088.png">
+                        <img onclick="displayCardInfo(1014)" src="../cards/1010.png">
+                    </div>
+
+                    <h2 class="cardsExplained">B-tier</h2>
+                    <div class="cardTier">
+                        <img onclick="displayCardInfo(14)" src="../cards/014.png">
+                        <img onclick="displayCardInfo(60)" src="../cards/060.png">
+                        <img onclick="displayCardInfo(1014)" src="../cards/1014.png">
+                    </div>
+
+                    <h2 class="cardsExplained">C-tier</h2>
+                    <div class="cardTier">
+                        <img onclick="displayCardInfo(1007)" src="../cards/1007.png">
+                        <img onclick="displayCardInfo(1008)" src="../cards/1008.png">
+                        <img onclick="displayCardInfo(1009)" src="../cards/1009.png">
+                    </div>
+                </div>
+                <div id="infoAboutCard">
+                    <h1>Description</h1>
+                    <div class="showCards" style="margin: 20px">
+                        <img id="cardForDesc" src="" style="width: 40%">
+                        <p id="descOfCard" style="width: 60%"></p>
+                    </div>
+                    <i class="fa-solid fa-circle-xmark" id="cancel"></i>
+                </div>
+                
+            </div>  
+        </div>
+    </body>

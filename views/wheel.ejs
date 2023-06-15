@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/stylesheet/wheelStyles.css">
+        <link rel="stylesheet" href="/stylesheet/generalStyles.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            const user_id = `<%= user.user_id %>`
+        </script>
+        <script src="/javascript/spin.js"></script>
+        <script src="https://kit.fontawesome.com/003f491bf9.js" crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        <div id="wheelContainer">
+            <div class="nav" style="color:wheat">
+                <h1>Hunter X Hunter</h1>
+                <div class="navbar">
+                    <h3 class="navButton"><a href="/">Play</a></h3>
+                    <h3 class="navButton"><a href="/wheel">Spin</a></h3>
+                    <h3 class="navButton"><a href="/book">Book</a></h3>
+                    <h3 class="navButton">Info</h3>
+                    <% if(typeof user == 'undefined') {%>
+                         <a href="/auth"><h3 id="registerButton">Sign-up/Login</h3></a> 
+                    <%} else {%>
+                        <div class="loginedName" id="registerButton" style="width: 200px;">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="/logout">
+                                <h3 style="padding-left: 10px;"><%=user.login%></h3>
+                            </a>
+                        </div>
+                    <% } %>
+                    
+                </div>
+            </div>
+            <h2 style="margin-left: 100px;">Try your luck</h2>
+            <div class="container" style="color:white;">
+                <div class="spinBtn">SPIN</div>
+                    <div class="wheel">
+                        <div class="number" style="--i:1;--clr:#927cc5;">
+                            <span>S</span>
+                        </div>
+                        <div class="number" style="--i:2;--clr:#fee5f8">
+                            <span>C</span>
+                        </div>
+                        <div class="number" style="--i:3;--clr:#c689c5;">
+                            <span>A</span>
+                        </div>
+                        <div class="number" style="--i:4;--clr:#ffaae3;">
+                            <span>B</span>
+                        </div>
+                        <div class="number" style="--i:5;--clr:#fee5f8;">
+                            <span>C</span>
+                        </div>
+                        <div class="number" style="--i:6;--clr:#ffaae3;">
+                            <span>B</span>
+                        </div>
+                        <div class="number" style="--i:7;--clr:#fee5f8;">
+                            <span>C</span>
+                        </div>
+                        <div class="number" style="--i:8;--clr:#ffaae3;">
+                            <span>B</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        
+        <div id="getEffect">
+            <h1>You got: </h1>
+            <img id="image">
+        </div>
+    </body>
+</html>

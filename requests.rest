@@ -1,0 +1,22 @@
+
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "login": "hello123",
+    "password": "Ben1"
+}
+
+###
+
+GET http://localhost:3000/
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImhlbGxvMTIzIiwicGFzc3dvcmQiOiJCZW4xIiwiYWN0aW9uIjoibG9naW4iLCJpYXQiOjE2ODUyNzkzMDB9.bK4-2fubrB53xxv-IScAA7q1NuaE5FGSeoOA04Uzceo; Path=/; HttpOnly
+
+### 
+POST http://localhost:3000/
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImhlbGxvMTIzIiwicGFzc3dvcmQiOiJCZW4xIiwiYWN0aW9uIjoibG9naW4iLCJpYXQiOjE2ODUyNzkzMDB9.bK4-2fubrB53xxv-IScAA7q1NuaE5FGSeoOA04Uzceo; Path=/; HttpOnly
+Content-Type: application/json
+
+{
+    "card_id": {"number": "1", "path": ".//"}
+}

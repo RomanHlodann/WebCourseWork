@@ -1,0 +1,264 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+body{
+    background: url(/images/Twilight-0.7s-1920px\(3\).png); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+}
+
+.container{
+    height: 98vh;
+    width: 60%;
+    position: relative;
+    transition: transform 0.5s;
+}
+
+.page{
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    top: 5%;
+    left: 0;
+    perspective: 6000px;
+}
+
+.pages{
+    max-width: 100%;
+    max-height: 800px;
+}
+
+#firstPage{
+    min-width: 610px;
+}
+
+.front,
+.back {
+    position: absolute;
+    
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+.front {
+    z-index: 1;
+    backface-visibility: hidden;
+}
+.back {
+    z-index: 0;
+}
+
+.flipped .front,
+.flipped .back {
+    transform: rotateY(-180deg);
+    transform: rotateX();
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 0.5s;
+    z-index: 10;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover i {
+    color: #636363;
+}
+
+i {
+    font-size: 50px;
+    color: wheat;
+}
+
+#p1{
+    z-index: 2;
+}
+
+#p2{
+    z-index: 1;
+}
+
+.text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    color: wheat;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    width: 30%;
+}
+
+#subtext {
+    font-size: 17px;
+    border-top: 1px solid wheat;
+    padding-top: 10px
+}
+
+.text button {
+    width: 150px;
+    height: 30px;
+    font-size: 17px;
+    color: wheat;
+    font-weight: bold;
+    border: 1px solid wheat;
+    
+}
+
+#getBack{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 50px 70px;
+    z-index: 100;
+}
+
+#help{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 135px 70px;
+    z-index: 100;
+}
+
+.cards{
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    max-width: 100%;
+    max-height: 800px;
+}
+
+.cards img{
+    width: 28.5%;
+    padding-left: 3%;
+    padding-top: 2.8%;
+    box-shadow: 10px darkslateblue;
+}
+
+.spanContainer{
+   margin-right: 10px;
+}
+
+#secondPage{
+    width: 70%;
+    opacity: 0;
+    padding-top: 92%;
+    padding-left: 6.5%;
+
+}
+
+#count{
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 20%;
+    margin-top: 102%;
+    margin-left: 4%;
+    background-color: darkslateblue;
+    border-radius: 50%;
+}
+
+#countOfCards{
+    opacity: 0;
+    color:wheat;
+    font-size: 50px;
+    font-weight: bold;
+    
+}
+
+.moveButtons{
+    width: 210px; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    height: 20%;
+    margin-top: 99%;
+    margin-left: 1.8%;
+}
+
+.vert{
+    display: flex; 
+    flex-direction: column; 
+    width: 60px; 
+    align-items: center;
+}
+
+.arrow{
+    background-color: darkslateblue; 
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%); 
+    border-radius: 25%;
+    min-height: 40px;
+    width: 57px;
+    height: 55px;
+    max-height: 100px;
+}
+
+#addButton{
+    background-color: darkslateblue;
+    border-radius: 50%;
+    width: 50px;
+    margin: 1.5px;
+    height: 48px;
+}
+
+#messageAboutInventory{
+    font-size: 33px;
+    color:white;
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    text-align: center;
+}
+
+.blur{
+    transition: all 1s ease-in;
+    filter: blur(8px);
+}
+
+#helpForTapOnCard{
+    position: absolute;
+    top: -5%;
+    right: 0%;
+    opacity: 0;
+    z-index: 10;
+}
+
+#textCardHelp{
+    position: absolute;
+    top: 0;
+    right: -8%;
+    transform: scaleX(-1);
+    color: darkslateblue
+}
+
+.infoCardHelp{
+    opacity: 0;
+    position: absolute;
+    top: 25%;
+    left: 20%;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+}
+
+#helpInfoCardText{
+    position: absolute;
+    top: 5%;
+    left: 7%;
+    color: darkslateblue;
+    max-width: 300px;
+}

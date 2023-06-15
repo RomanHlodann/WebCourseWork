@@ -1,0 +1,188 @@
+body{
+    background-image: url(../images/abGeDjE_460s\(1\).jpg);
+}
+
+.left-pane{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+    margin-left: 100px;
+    font-size: 25px;
+    z-index: 1;
+}
+
+#playBttn{
+    font-size: 20px;
+    width: 30%;
+    background-color: wheat;
+    color: darkslateblue;
+}
+
+.mainContainer{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.mainContainer p {
+    font-size: 15px; 
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.chat{
+    opacity: 0;
+    box-shadow: 8px;
+    position: absolute;
+    top:15%;
+    left: 17%;
+    width: 34%;
+    height: 80%;
+    background-color: wheat;
+    border-radius: 15px;
+    border: 2px solid darkslateblue;
+    min-width: 350px;
+    z-index: 0;
+}
+
+.opponentName{
+    width: 100%;
+    height: 10%;
+    background-color: darkslateblue;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 12px;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+.message-left, .message-right{
+    list-style: none;
+    padding: 8px 12px;
+    margin: 12px;
+    max-width: 350px;
+    font-size: 18px;
+    word-wrap: break-word;
+    color:wheat;
+}
+
+.message-left{
+    border-radius: 20px 20px 20px 0px;
+    align-self: flex-start;
+    background-color: white;
+    box-shadow: -2px 2px 4px lightpink;
+    color:darkslateblue;
+}
+
+.message-right{
+    border-radius: 20px 20px 0px 20px;
+    align-self: flex-end;
+    background-color: darkslateblue;
+    box-shadow: -2px 2px 4px lightpink;
+}
+
+.message-left > p > span, .message-right > p > span {
+    display: block;
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.feedback{
+    font-style: italic;
+    font-size: 14px;
+    padding: 0px 16px 16px 16px;
+    color: darkslateblue;
+    text-align: center;
+}
+
+.message-form{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.message-input{
+    flex-grow: 1;
+    height: 48px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    width: 80%;
+}
+
+.send-button{
+    color: wheat;
+    background-color: darkslateblue;
+    height: 48px;
+    border: none;
+    padding: 0 20px;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 20%;
+}
+
+.inventory{
+    opacity: 0;
+    position: absolute;
+    background-color: wheat;
+    color: darkslateblue;
+    height: 78%;
+    width: 30%;
+    top: 16%;
+    left: 52%;
+    border-radius: 15px;
+    border: solid 5px darkslateblue;
+    min-width: 250px;
+    display: inline;
+}
+
+#game{ 
+    opacity: 0;
+    z-index: 0;
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    background-color: darkslateblue;
+    border-radius: 15px;
+    top: 35%;
+    left: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.cardInGame {
+    text-align: center;
+    width: 50%;
+    padding: 5%;
+}
+
+.actionCard{
+    opacity: 0;
+    color: wheat;
+    background-color: darkslateblue;
+    border-radius: 15px;
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

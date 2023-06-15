@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/javascript/book.js" defer></script>
+        <link rel="stylesheet" href="/stylesheet/bookStyle.css">
+        <script src="https://kit.fontawesome.com/003f491bf9.js" crossorigin="anonymous"></script>
+        <script>
+            let cards = []
+            function pushToArray(id, count_of_cards, path){
+                cards.push({cardId: id, count_of_cards, path})
+            }
+            let elem;
+        </script>
+    </head>
+    
+    <body>
+        <button id="help" onclick="getHelp()"><i class="fa-solid fa-circle-question" style="color: wheat;"></i></button>
+        <a id="getBack" href="/"><i class="fa-solid fa-right-to-bracket"></i></a>
+        <button id="prev-btn" class="btn" style="margin: 10px;">
+            <i class="fas fa-arrow-circle-left"></i>
+        </button>
+        <div class="container" id="book">
+            <div id="p1" class="page">
+                <div class="front">
+                    <img src="/images/bookobks.png" id="firstPage" class="pages">
+                </div>
+                <div class="back">
+                    <div id="helpForTapOnCard">
+                        <img src="/images/smile2.png" style=" width: 110%; max-height: 90px; transform: scaleX(-1);">
+                        <h3 id="textCardHelp">For checking info u should tap on card.<br>
+                            Checkmark is card in inventory</h3>
+                    </div>
+                    <img src="/images/zyro-image02.jpg" class="pages">
+                    <div class="cards">
+                        <% if(typeof result !== 'undefined' && result.length > 0) {%>
+                            <% let counter = 0; %>
+                                <% while(counter < result.length && counter < 9) { %>
+                                    <% console.log(result) %>
+                                    <% let cardId =  result[counter].cardId%>
+                                    <% console.log(result) %>
+                                    <% const imagePath = `/cards/${cardId > 99 ? cardId : '0' + cardId}.png`; %>
+                                    <script>
+                                        pushToArray(`<%= cardId %>`, `<%= result[counter].countOfCards %>`, `<%= imagePath %>`)
+                                    </script>
+                                    
+                                <div id="parentMark" style="display: inline">
+                                    <a onclick="outputChosenCard( '<%= counter %>',)"><img src=<%=imagePath%>></a>
+                                <% let top = Math.floor(counter / 3) * 33 + 2 %>
+                                <% let left = Math.floor(counter % 3) * 32 + 25 %>
+                                <% let idElem = cardId + "mark"%>
+                                <% if(typeof result[counter].inventory !== 'undefined' && result[counter].inventory == 1){ %>
+                                    
+                                    <img id=<%= idElem %> src="/images/icons8-check.svg" style="width: 8%">
+                                        <script>
+                                            elem = document.getElementById(`<%= idElem %>`)
+                                            elem.style.position = "absolute"
+                                            elem.style.top = `<%=top %>` + "%"
+                                            elem.style.left = `<%=left %>` + "%"
+                                        </script>
+                    
+                                    <% }%>
+                                </div>
+                                    <% counter++; %>
+                                <% }%>
+                        <% }%>
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                <p><b>hunterBook</b></p>
+                <p id="subtext"><b>hunterBook</b> is a real 3D flip book where you can find your cards you have</p>
+                <button id="check">Check</button>
+            </div>
+            <div id="p2" class="page">
+                <div class="front">
+                    <img src="/images/zyro-image012.jpg" class="pages">
+                    <div style="position: absolute; top: 0; width: 600px; display: flex; flex-direction: row;">
+                        <div id="count">
+                            <p id="countOfCards"></p>
+                        </div>
+                        
+                        <h1 id="messageAboutInventory"></h1>
+                        <div class="infoCardHelp" id="infoCardHelp">
+                            <div>
+                                <img src="/images/pngwing.com(2).png" style="width: 80%;">
+                                <h2 id="helpInfoCardText">Here you can check count of cards, card itself, move between cards, and add card to inventory by clicking on circle</h2>
+                            </div>
+                            <div class="row">
+                                <img src="/images/pngwing.com.png" style="height: 100px; transform: rotate(180deg);">
+                                <img src="/images/pngwing.com.png" style="height: 100px; transform: rotate(120deg);">
+                                <img src="/images/pngwing.com.png" style="height: 100px; transform: scaleY(-1);">
+                            </div>
+                        </div>
+                        
+                        <img id="secondPage" style="max-width: 170px;">
+                        <div class="moveButtons">
+                            <button onclick="outputCardFromArrow(-1)" class="arrow" style="transform: rotate(270deg);"></button>
+                            <div class="vert">
+                                    <button onclick="outputCardFromArrow(-3)" class="arrow"></button>
+                                <button id="addButton"></button>
+                                <button onclick="outputCardFromArrow(3)" class="arrow"  style="transform: scaleY(-1);"></button>
+                            </div> 
+                            <button onclick="outputCardFromArrow(1)" class="arrow" style="transform: rotate(90deg);"></button>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="/images/bookobks.png" id="firstPage" class="pages">
+                </div>
+            </div>
+        </div>
+        <button id="next-btn" class="btn">
+            <i class="fas fa-arrow-circle-right"></i>
+        </button>
+    </body>
+</html>

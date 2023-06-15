@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/stylesheet/wheelStyles.css">
+        <link rel="stylesheet" href="/stylesheet/generalStyles.css">
+        <link rel="stylesheet" href="/stylesheet/play.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://kit.fontawesome.com/003f491bf9.js" crossorigin="anonymous"></script>
+        <script>
+            const user_id = `<%= user.user_id %>`
+            const user_login = `<%= user.login %>`
+        </script>
+    </head>
+    
+    <body>
+        <div id="wheelContainer">
+            <div class="nav" style="color:wheat">
+                <h1>Hunter X Hunter</h1>
+                <div class="navbar">
+                    <h3 class="navButton"><a href="/">Play</a></h3>
+                    <h3 class="navButton"><a href="/wheel">Spin</a></h3>
+                    <h3 class="navButton"><a href="/book">Book</a></h3>
+                    <h3 class="navButton"><a href="/info">Info</a></h3>
+                    <% if(typeof user == 'undefined') {%>
+                         <a href="/auth"><h3 id="registerButton">Sign-up/Login</h3></a> 
+                    <%} else {%>
+                        <div class="loginedName" id="registerButton" style="width: 200px;">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="/logout">
+                                <h3 style="padding-left: 10px;"><%=user.login%></h3>
+                                
+                            </a>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="left-pane" id="pane">
+            <div>
+                <i class="fa-solid fa-globe"></i>
+                <span id="count">0</span> users online on this page
+            </div>
+            <div class="mainContainer">
+                <h1>Welcome to the Greed Island!</h1>
+                <p style="font-size: 15px; text-align: center;">
+                    Greed Island is a dangerous video game meant only for Hunters.
+                     It can only be played by Nen users. There is no limit to how many people can enter the game</p>
+                <button id="playBttn">Play</button>
+            </div>
+        </div>
+        <div class="chat" id="chat">
+            <div class="opponentName">
+                <i class="fa-solid fa-user" style="margin-right: 10px;"></i>
+                <h2><%= user.login %></h2>
+            </div>
+            <div class="message-container" id="message-container" style="color:black">
+                
+            </div>
+            <form class="message-form" id="message-form">
+                <input type="text" name="message" id="message-input" class="message-input">
+                
+                <button type="submit" class="send-button">Send<span><i class="fa-solid fa-paper-plane"></i></span></button>
+            </form>
+            <div id="game">
+                <div style="position: absolute; left: 2%; display: flex; flex-direction: row;">
+                    <h2>Timer: </h1>
+                    <h2 id="countDown"></h1>
+                </div>
+                <div class="cardInGame">
+                    <h1>You</h1>
+                    <img id="yourCard" style="height: 75%;">
+                </div>
+                <div class="cardInGame">
+                    <h1>Opponent</h1>
+                    <img id="opponentCard" style="height: 75%;">
+                </div>
+            </div>
+            
+            <div id="actionCard1" class="actionCard" style="left: 10%; background-color: darkslateblue;">
+                <h1 id="lost">You lost</h1>
+                <img id="lostCard" src="" style="width: 70%;">
+            </div>
+            <div id="actionCard2" class="actionCard" style="left: 50%">
+                <h1 id="got">You lost</h1>
+                <img id="gotCard" src="" style="width: 70%;">
+            </div>
+            
+            
+        </div>
+        <div class="inventory" id="inventory">
+            <h1 style="margin: 5% 5%;">Inventory</h1>
+            <% if( typeof inventory !== 'undefined') {%>
+                <% let counter = 0; %>
+                <% while(counter < inventory.length && counter < 4) { %>
+                    <% let cardId =  inventory[counter].card_id%>
+                    <% const imagePath = `/cards/${cardId > 99 ? cardId : '0' + cardId}.png`; %>
+                    <a onclick="openGame('<%=cardId%>')"><img src=<%=imagePath%> style="width: 43%; padding-left: 8%;"></a>
+                    <% counter++; %>
+                <% } %>
+            <% } %>
+        </div>
+        <script>
+            
+         </script>
+         <script src="/javascript/play.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
+    </body>
+</html>

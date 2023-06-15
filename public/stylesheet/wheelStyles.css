@@ -1,0 +1,124 @@
+
+body{
+    background-image: url("/images/pito.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    color: wheat;
+
+}
+
+.nav{
+    width:100%;
+    padding: 40px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:darkslateblue;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+}
+.navButton{
+    font-size: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 600px;
+    width: 40%;
+    padding-top: 20px;
+    margin: 20px 100px;
+    padding: 30px;
+    
+    border-radius: 5%;
+}
+
+.container .spinBtn {
+    position: absolute;
+    
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: darkslateblue;
+    cursor: pointer;
+}
+
+.container .spinBtn::before {
+    content: '';
+    position: absolute;
+    top: -28px;
+    width: 20px;
+    height: 30px;
+    background: white;
+    clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+}
+
+.container .wheel {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 5px darkslateblue,
+        0 0 0 15px #fff, 
+        0 0 0 18px darkslateblue;
+}
+
+.container .wheel .number{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: var(--clr);
+    transform-origin: bottom right;
+    transform: rotate(calc(45deg * var(--i)));
+    clip-path: polygon(0 0, 57% 0, 100% 100%, 0 57%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .wheel .number span{
+    position: relative;
+    transform: rotate(45deg);
+    font-size: 40px;
+    font-weight: 700;
+}
+
+#getEffect{
+    position: absolute;
+    opacity: 0;
+    top: 15%;
+    left: 13%;
+    width: 25%;
+    height: 50%;
+    background-color: wheat;
+    border-radius: 5%;
+    color: darkslateblue;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 350px 20px;
+    
+    z-index: 5;
+}
+
+
+.blur{
+    transition: all 1s ease-in;
+    filter: blur(8px);
+}
